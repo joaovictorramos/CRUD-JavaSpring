@@ -4,8 +4,8 @@ services:
     container_name: mariadb_spring
     environment:
       MYSQL_DATABASE: bd_task
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_USER: cefetino
+      MYSQL_PASSWORD: cefetino
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - mariadb_dataspring:/var/lib/mysql
