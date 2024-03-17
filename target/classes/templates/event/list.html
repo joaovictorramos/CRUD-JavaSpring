@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+</head>
+<body>
+    <h2>Student Portal</h2>
+    <div class="container">
+        <div class="get-container">
+            <div class="get-container">
+                <h3>List Student</h3>
+                <br>
+                <form th:action="@{/list-student}" th:object="${studentRecordDto}" method="get">
+                    <div>
+                        <label for="registration">Enter the registration: </label>
+                        <input type="text" name="registration" id="registration">
+                    </div>
+                    <table th:if="${showTable}">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>name</th>
+                                <th>lastname</th>
+                                <th>registration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="student : ${students}">
+                                <td th:text="${student.id}"></td>
+                                <td th:text="${student.name}"></td>
+                                <td th:text="${student.lastname}"></td>
+                                <td th:text="${student.registration}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <input type="submit" value="List">
+                    <a th:href="@{/}">Go back</a>
+                    <div th:text="${getMessageError}"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

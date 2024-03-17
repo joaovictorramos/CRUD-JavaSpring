@@ -1,0 +1,29 @@
+services:
+  mariadb:
+    image: mariadb:11.2.2
+    container_name: mariadb_spring
+    environment:
+      MYSQL_DATABASE: bd_task
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mariadb_dataspring:/var/lib/mysql
+    ports:
+      - "3308:3306"
+    networks:
+      - javaspring_project
+
+  #demo:
+  #  image: demo
+  #  container_name: demo
+  # build: .
+  #  ports:
+  #    - "8000:8080"
+
+volumes:
+  mariadb_dataspring:
+
+networks:
+  javaspring_project:
+    driver: bridge

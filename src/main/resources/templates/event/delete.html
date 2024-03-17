@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+</head>
+<body>
+    <h2>Student Portal</h2>
+    <div class="container">
+        <div class="delete-container">
+            <h3>Delete by registration</h3>
+            <form th:action="@{/delete}" th:object="${studentRecordDto}" method="post">
+                <div>
+                    <label for="registration">Registration</label>
+                    <input type="text" name="registration" id="registration">
+                </div>
+                <input type="submit" value="delete">
+                <a th:href="@{/}">Go back</a>
+                <div th:text="${deleteMessage}"></div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

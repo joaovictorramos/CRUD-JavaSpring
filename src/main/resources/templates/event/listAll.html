@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+</head>
+<body>
+    <h2>Student Portal</h2>
+    <div class="container">
+        <div class="getall-container">
+            <h3>List all student</h3>
+            <br>
+            <form th:action="@{/find-all}" th:object="${studentRecordDto}" method="get">
+                <input type="submit" value="Get all">
+                <a th:href="@{/}">Go back</a>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>lastname</th>
+                            <th>registration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="student : ${students}">
+                            <td th:text="${student.id}"></td>
+                            <td th:text="${student.name}"></td>
+                            <td th:text="${student.lastname}"></td>
+                            <td th:text="${student.registration}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div th:text="${getMessageError}"></div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

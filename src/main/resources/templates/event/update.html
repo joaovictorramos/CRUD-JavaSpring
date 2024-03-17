@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+</head>
+<body>
+    <h2>Student Portal</h2>
+    <div class="container">
+        <div class="put-container">
+            <h3>Update by registration</h3>
+            <form th:action="@{/update}" th:object="${studentRecordDto}" method="post">
+                <div>
+                    <div>
+                        <label for="registration">Enter the registration: </label>
+                        <input type="text" name="registration" id="registration">
+                    </div>
+                </div>
+                <div>
+                    <label for="name">Name: </label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div>
+                    <label for="lastname">Lastname: </label>
+                    <input type="text" name="lastname" id="lastname">
+                </div>
+                <input type="submit" value="Update">
+                <a th:href="@{/}">Go back</a>
+                <div th:text="${updateMessage}"></div>
+            </form>
+        </div>
+    </div>  
+</body>
+</html>

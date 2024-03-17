@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Portal</title>
+    </head>
+    <body>
+        <h2>Student Portal</h2>
+        <div class="container">
+            <div class="post-container">
+                <form th:action="@{/register-student}" th:object="${studentRecordDto}" method="post">
+                    <h3>Register Student</h3>
+                    <br>
+                    <div>
+                        <label for="name">Name: </label>
+                        <input type="text" name="name" id="name" th:field="*{name}">
+                    </div>
+                    <div>
+                        <label for="lastname">Lastname: </label>
+                        <input type="text" name="lastname" id="lastname" th:field="*{lastname}">
+                    </div>
+                    <div>
+                        <label for="registration">Registration: </label>
+                        <input type="text" name="registration" id="registration" th:field="*{registration}">
+                    </div>
+                    <input type="submit" value="Submit">
+                    <div th:text="${postMessage}"></div>
+                </form>
+            </div>
+            <div></div>
+            <br>
+            <div class="get-container">
+                <h3>List Student</h3>
+                <br>
+                <form th:action="@{/list-student}" th:object="${studentRecordDto}" method="get">
+                    <div>
+                        <label for="registration">Enter the registration: </label>
+                        <input type="text" name="registration" id="registration">
+                    </div>
+                    <table th:if="${showTable}">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>name</th>
+                                <th>lastname</th>
+                                <th>registration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="student : ${students}">
+                                <td th:text="${student.id}"></td>
+                                <td th:text="${student.name}"></td>
+                                <td th:text="${student.lastname}"></td>
+                                <td th:text="${student.registration}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <input type="submit" value="List">
+                    <div th:text="${getMessageError}"></div>
+                </form>
+            </div>
+            <br>
+            <div class="getall-container">
+                <h3>List all student</h3>
+                <br>
+                <form th:action="@{/find-all}" th:object="${studentRecordDto}" method="get">
+                    <input type="submit" value="Get all">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>name</th>
+                                <th>lastname</th>
+                                <th>registration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="student : ${students}">
+                                <td th:text="${student.id}"></td>
+                                <td th:text="${student.name}"></td>
+                                <td th:text="${student.lastname}"></td>
+                                <td th:text="${student.registration}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div th:text="${getMessageError}"></div>
+                </form>
+            </div>
+            <br>
+            <div class="put-container">
+                <h3>Update by registration</h3>
+                <form th:action="@{/update}" th:object="${studentRecordDto}" method="post">
+                    <div>
+                        <div>
+                            <label for="registration">Enter the registration: </label>
+                            <input type="text" name="registration" id="registration">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="name">Name: </label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div>
+                        <label for="lastname">Lastname: </label>
+                        <input type="text" name="lastname" id="lastname">
+                    </div>
+                    <input type="submit" value="Update">
+                    <div th:text="${updateMessage}"></div>
+                </form>
+            </div>
+            <br>
+            <div class="delete-container">
+                <h3>Delete by registration</h3>
+                <form th:action="@{/delete}" th:object="${studentRecordDto}" method="post">
+                    <div>
+                        <label for="registration">Registration</label>
+                        <input type="text" name="registration" id="registration">
+                    </div>
+                    <input type="submit" value="delete">
+                    <div th:text="${deleteMessage}"></div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
